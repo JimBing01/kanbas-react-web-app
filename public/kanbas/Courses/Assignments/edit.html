@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <table >
+    <tbody>
+      <tr>
+        <td valign="top">
+          <ul>
+            <li><a href="/kanbas/Account/index.html">Account</a></li>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="/kanbas/Courses/index.html">Courses</a></li>
+            <li><a href="#">Calendar</a></li>
+            <li><a href="#">Inbox</a></li>
+            <li><a href="#">History</a></li>
+            <li><a href="#">Studio</a></li>
+            <li><a href="#">Commons</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+        </td>
+
+        <td valign="top">
+          <ul>
+            <li><a href="/kanbas/Courses/Home/home.html">Home</a></li>
+            <li><a href="#">Modules</a></li>
+            <li><a href="#">Piazza</a></li>
+            <li><a href="#">Zoom Meetings</a></li>
+            <li><a href="/kanbas/Courses/Assignments/index.html">Assignments</a></li>
+            <li><a href="#">Quizzes</a></li>
+            <li><a href="/kanbas/Courses/Grades/grades.html">Grades</a></li>
+            <li><a href="#">People</a></li>
+            <li><a href="#">Panopto Video</a></li>
+            <li><a href="#">Discussions</a></li>
+            <li><a href="#">Announcements</a></li>
+            <li><a href="#">Pages</a></li>
+            <li><a href="#">Files</a></li>
+            <li><a href="#">Rubrics</a></li>
+            <li><a href="#">Outcomes</a></li>
+            <li><a href="#">Collaborations</a></li>
+            <li><a href="#">Syllabus</a></li>
+            <li><a href="/kanbas/Courses/Settings/coursesDetails.html">Settings</a></li>
+          </ul>
+        </td>
+
+        <td valign="top">
+          </br>
+          <form>
+            <select>
+              <option value = "SPEED-GRADER">SpeedGrader</option>
+            </select></br>
+            <HR align="left" width=300 color=#2F4F4F size=1></br>
+
+            <b>Assignment Name</b></br></br>
+            <input placeholder="A1 - ENV + HTML"></br></br>
+            <textarea>This is the assignment description</textarea></br></br>
+
+            <label for="points"></label>
+            <input id="points" placeholder="100"></br></br>
+
+            <label for="assignment-group"></label>
+            <select id="assignment-group">
+              <option value="ASSIGNMENTS">ASSIGNMENTS</option>
+            </select></br></br>
+
+            <label for="display-grade-as"></label>
+            <select id="display-grade-as">
+              <option value="PERCENTAGE">Percentage</option>
+            </select></br></br>
+
+            <label for="submission-type">Submission Type</label></br>
+            <select id="submission-type">
+              <option value="ONLINE">Online</option>
+            </select></br></br>
+
+            Online Entry Options</br>
+            <input type="checkbox" value="TEXT-ENTRY" name="online-entry-options"
+                   id="text-entry">
+            <label for="text-entry">Text Entry</label><br/>
+            <input type="checkbox" value="WEBSITE-URL" name="online-entry-options"
+                   id="website-url">
+            <label for="website-url">Website URL</label>    <br/>
+            <input type="checkbox" value="MEDIA-RECORDINGS" name="online-entry-options"
+                   id="media-recordings">
+            <label for="media-recordings">Media Recordings</label>    <br/>
+            <input type="checkbox" value="STUDENT-ANNOTATION" name="online-entry-options"
+                   id="student-annotation">
+            <label for="student-annotation">Student Annotations</label>    <br/>
+            <input type="checkbox" value="FILE-UPLOADS" name="online-entry-options"
+                   id="file-uploads">
+            <label for="file-uploads">File Uploads</label></br></br>
+
+            <label for="submission-attempt">Submission Attempts</label></br>
+            <select id="submission-attempt">
+              <option value="UNLIMITED">Unlimited</option>
+            </select></br></br>
+
+            <label for="plagiarism">Plaglarism Review</label></br>
+            <select id="plagiarism">
+              <option value="NONE">None</option>
+            </select></br></br>
+
+            <label for="group-assignment">Group Assignment</label></br>
+            <input type="checkbox" value="GROUP-ASSIGNMENT" id="group-assignment">
+            <label for="group-assignment">This is a Group Assignment</label></br></br>
+
+            <label for="peer-reviews">Peer Reviews</label></br>
+            <input type="checkbox" value="REQUIRE-PEER-REVIEW"
+                   id="peer-reviews">
+            <label for="peer-reviews">Require Peer Reviews</label></br></br>
+
+            Assign</br>
+            <label for="assign">Assign to</label></br>
+            <input id="assign" value="Everyone"><br/></br>
+
+            <label for="assign-due">Due</label><br/>
+            <input id="assign-due" type="date" value="2021-01-01"><br/></br>
+
+            <label for="assign-available-from">Available from</label></br>
+            <input id="assign-available-from" type="date" value="2021-01-01"></br></br>
+
+            <label for="assign-available-to">Until</label></br>
+            <input id="assign-available-to" type="date" value="2021-01-01"></br></br>
+
+
+            <button onclick="window.location.href = '/kanbas/Courses/Assignments/index.html'"
+                    type="button">
+              cancel
+            </button>
+            <button onclick="window.location.href = '/kanbas/Courses/Assignments/index.html'"
+                    type="button">
+              save
+            </button>
+
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <table>
+    <tbody valign="top">
+      <tr>
+        <td>
+          <ul>
+            <li><a href="/kanbas/Account/index.html">Account</a></li>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="/kanbas/Courses/index.html">Courses</a></li>
+            <li><a href="#">Calendar</a></li>
+            <li><a href="#">Inbox</a></li>
+            <li><a href="#">History</a></li>
+            <li><a href="#">Studio</a></li>
+            <li><a href="#">Commons</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+        </td>
+
+        <td>
+          <ul>
+            <li><a href="/kanbas/Courses/Home/home.html">Home</a></li>
+            <li><a href="#">Modules</a></li>
+            <li><a href="#">Piazza</a></li>
+            <li><a href="#">Zoom Meetings</a></li>
+            <li><a href="/kanbas/Courses/Assignments/index.html">Assignments</a></li>
+            <li><a href="#">Quizzes</a></li>
+            <li><a href="/kanbas/Courses/Grades/grades.html">Grades</a></li>
+            <li><a href="#">People</a></li>
+            <li><a href="#">Panopto Video</a></li>
+            <li><a href="#">Discussions</a></li>
+            <li><a href="#">Announcements</a></li>
+            <li><a href="#">Pages</a></li>
+            <li><a href="#">Files</a></li>
+            <li><a href="#">Rubrics</a></li>
+            <li><a href="#">Outcomes</a></li>
+            <li><a href="#">Collaborations</a></li>
+            <li><a href="#">Syllabus</a></li>
+            <li><a href="/kanbas/Courses/Settings/coursesDetails.html">Settings</a></li>
+          </ul>
+        </td>
+
+        <td>
+
+          </br>
+          <select id="gradebook">
+            <option value="GRADEBOOK">Gradebook</option>
+          </select>
+          <button type="button">import</button>
+          <select id="export">
+            <option value="EXPORT">Export</option>
+          </select>
+          <button type="button">Configure</button></br>
+
+          </br>
+          <form id="students-assignments">
+            <label for="student-name"><b>Students Names</b></label></br></br>
+            <input id="student-name" placeholder="Search Students"></br></br>
+            <label for="assignment-name"> <b>Assignment Names</b></label></br></br>
+            <input id="assignment-name" placeholder="Search Assignments"></br></br>
+          </form>
+          <button type="button">Apply Filters</button></br></br>
+
+          <table border="1" >
+            <thead align="middle">
+              <tr>
+                <td><b>Student Name</b></td>
+                <td><b>A1 SETUP</br>Out of 100</b></td>
+                <td><b>A2 HTML</br> Out of 100</b></td>
+                <td><b>A3 CSS</br> Out of 100</b></td>
+                <td><b>A4 BOOTSTRAP</br> Out of 100</b></td>
+              </tr>
+            </thead>
+            <tbody align="middle">
+              <tr>
+                <td>Alice Wonderland</td>
+                <td>98</td>
+                <td>89</td>
+                <td><input value="87" size="4"
+                           style="text-align: center"></td>
+                <td>90</td>
+              </tr>
+              <tr>
+                <td>Princes Leia</td>
+                <td>98</td>
+                <td>80</td>
+                <td>87</td>
+                <td>86</td>
+              </tr>
+              <tr>
+                <td>Luke Skywalker</td>
+                <td><input value="99" size="4"
+                           style="text-align: center"></td>
+                <td>88</td>
+                <td>97</td>
+                <td>82</td>
+              </tr>
+              <tr>
+                <td>Han Solo</td>
+                <td>83</td>
+                <td>99</td>
+                <td>94</td>
+                <td><input value="98" size="4"
+                           style="text-align: center"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
