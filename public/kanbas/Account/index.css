@@ -1,0 +1,21 @@
+
+.account{
+    text-align: center;
+    list-style: none;
+    width: 190px;
+    padding: 0px;
+    margin: 0px;
+    margin-left: 20px;
+    word-wrap: break-word;
+}
+
+.account li {
+    margin-bottom: 15px;
+    text-align: left;
+    padding: 5px;
+    padding-left: 8px;
+}
+
+.account a{
+    color: red;
+}

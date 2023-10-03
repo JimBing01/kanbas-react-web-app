@@ -1,0 +1,18 @@
+
+.courses{
+    text-align: center;
+    width: 190px;
+    margin-left: 20px;
+    word-wrap: break-word;
+}
+
+.courses li {
+    margin-bottom: 15px;
+    text-align: left;
+    padding: 5px;
+    padding-left: 8px;
+}
+
+.courses a{
+    color: red;
+}

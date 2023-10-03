@@ -1,0 +1,12 @@
+
+.setting li {
+    float: left;
+}
+
+.setting a{
+    color: red;
+}
+
+.setting a:hover{
+    color: red;
+}
