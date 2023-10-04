@@ -30,11 +30,11 @@
       text-decoration: none;
     }
 
-    .click-home {
+    .click {
       border-left: 2px solid black;
     }
 
-    .click-home a{
+    .click a{
       color: black;
     }
 
@@ -255,7 +255,7 @@
              aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#" style="color: red">CS4550.12631.2024.10</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Home</li>
+            <li class="breadcrumb-item active" aria-current="page">Module</li>
           </ol>
         </nav>
 
@@ -283,13 +283,13 @@
         </button>
 
         <span style="color:white;">CS4550.12631.202410</span></br>
-        <span style="color: white">Home</span>
+        <span style="color: white">Module</span>
       </div>
 
       <div class="courses hidden-1100" style="display: inline-block;vertical-align: top;width: 15%">
         <ul>
-          <li class="click-home"><a href="/kanbas/Courses/Home/home.html" >Home</a></li>
-          <li><a href="/kanbas/Courses/Modules/modules.html">Modules</a></li>
+          <li ><a href="/kanbas/Courses/Home/home.html" >Home</a></li>
+          <li class="click"><a href="/kanbas/Courses/Modules/modules.html">Modules</a></li>
           <li><a href="#">Piazza</a></li>
           <li><a href="#">Zoom Meetings</a></li>
           <li><a href="/kanbas/Courses/Assignments/index.html">Assignments</a></li>
@@ -312,13 +312,13 @@
       <div id="narrow-courses" class="narrow-courses"
            style="display: none;vertical-align: top;z-index: 10;position: fixed;">
         <ul>
-          <li class="click-home">
+          <li >
             <a href="/kanbas/Courses/Home/home.html" >
               <i class="fa fa-home" aria-hidden="true" style="color: red;margin-right: 10px"></i>
               Home
             </a>
           </li>
-          <li>
+          <li class="click">
             <a href="/kanbas/Courses/Modules/modules.html">
               <i class="fa fa-circle-o-notch" aria-hidden="true" style="color: red;margin-right: 10px"></i>
               Modules
