@@ -14,7 +14,10 @@ function KanbasNarrowNavigation() {
     const courseLinks = ["Home", "Modules", "Piazza", "Zoom Meetings", "Assignments",
         "Quizzes", "Grades", "People", "Panopto Video", "Discussions", "Announcements",
         "Pages", "Files", "Rubrics", "Outcomes", "Collaborations", "Syllabus", "Settings"];
-    const  courseId  = localStorage.getItem("courseId");
+    let  courseId  = localStorage.getItem("courseId");
+    if(courseId == null) {
+        courseId = db.courses[0]._id;
+    }
     const course = db.courses.find((course) => course._id === courseId);
     let {link} = courseLinks[0];
 

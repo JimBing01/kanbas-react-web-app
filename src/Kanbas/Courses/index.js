@@ -11,7 +11,12 @@ import './index.css'
 
 function Courses() {
     const { courseId } = useParams();
-    localStorage.setItem("courseId",courseId);
+    if(courseId == null) {
+        localStorage.setItem("courseId",db.courses[0]._id);
+    }else {
+        localStorage.setItem("courseId",courseId);
+    }
+
     const course = db.courses.find((course) => course._id === courseId);
     const links = ["Home", "Modules", "Piazza", "Zoom Meetings", "Assignments",
         "Quizzes", "Grades", "People", "Panopto Video", "Discussions", "Announcements",
