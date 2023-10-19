@@ -1,0 +1,41 @@
+@media screen and (max-width:700px){
+    .hidden-1100 {
+        display: none !important;
+    }
+}
+
+.ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navigation{
+    background: black;
+    text-align: center;
+    width: 85px;
+    height: 100%;
+    position: fixed;
+}
+
+.navigation li {
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.navigation a{
+    color: white;
+    text-decoration: none;
+}
+
+.active{
+    background-color: white;
+}
+
+.navigation .active a{
+    color: red;
+}
+
+.nav-icon-margin {
+    margin-bottom: 5px;
+}

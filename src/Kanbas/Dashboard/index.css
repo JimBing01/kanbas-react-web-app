@@ -1,0 +1,68 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-left-part a {
+    text-decoration: none;
+}
+
+.dashboard{
+    margin-left: 10px;
+}
+
+.published-course{
+    margin-left: 10px;
+}
+
+.hr-style{
+    align:left;
+    width:100%;
+    color:#2F4F4F;
+}
+
+.dashboard-left-part{
+    display: inline-block;
+    width: 90%;
+    margin-left: 30px;
+}
+
+.dashboard-left-part .course-col{
+    margin-bottom: 30px;
+    width: 300px;
+}
+
+.course-col .course-col-card{
+    width: 250px;
+    position: relative;
+}
+
+.ellipsis-style{
+    position: absolute;
+    color: white;
+    right: 10px;
+    top:10px;
+    font-size: large
+}
+
+.card-title-style{
+    font-size: small;
+    color: dodgerblue
+}
+
+.card-body-title{
+    font-size: medium;
+    color: gray
+}
+
+.card-body-text{
+    font-size: smaller;
+    color: gray
+}
+
+@media screen and (min-width:1500px){
+    .card-over-4 {
+        width: 1200px !important;
+    }
+}

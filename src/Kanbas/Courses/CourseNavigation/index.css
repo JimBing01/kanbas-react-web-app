@@ -1,0 +1,40 @@
+@media screen and (max-width:700px){
+    .hidden-1100 {
+        display: none !important;
+    }
+}
+
+.ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.courses{
+    text-align: center;
+    width: 190px;
+    margin-left: 20px;
+    word-wrap: break-word;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.courses li {
+    margin-bottom: 15px;
+    text-align: left;
+    padding: 5px;
+    padding-left: 8px;
+}
+
+.courses a{
+    color: red;
+    text-decoration: none;
+}
+
+.courses .active {
+    border-left: 2px solid black;
+}
+
+.courses .active a{
+    color: black;
+}

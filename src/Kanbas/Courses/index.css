@@ -1,0 +1,28 @@
+@media screen and (max-width:700px){
+    .hidden-1100 {
+        display: none !important;
+    }
+
+    .margin-left{
+        margin-left: 0px !important;
+        left:0px !important;
+    }
+
+
+    .display-1100 {
+        width: 100% !important;
+    }
+}
+
+
+.hr-style{
+    align:left;
+    width:100%;
+    color:#2F4F4F;
+}
+
+.breadcrumb-style{
+    --bs-breadcrumb-divider: '>';
+    display: inline-block;
+    margin-left: 20px
+}
