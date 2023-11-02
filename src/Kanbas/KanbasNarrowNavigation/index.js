@@ -5,7 +5,7 @@ import Dashboard from "../Dashboard";
 import Courses from "../Courses";
 import NarrowNavigation from "../Courses/CourseNavigation/NarrowNavigation";
 
-function KanbasNarrowNavigation() {
+function KanbasNarrowNavigation({courses, course}) {
     const links = ["Account", "Dashboard", "Courses", "Calender", "Inbox", "History", "Studio", "Commons", "Question"];
     const icons = ["fa-regular fa-circle-user fa-xl","fa-solid fa-gauge fa-xl","fa-solid fa-book fa-xl", "fa-solid fa-calendar-days fa-xl",
         "fa-solid fa-inbox fa-xl", "fa-regular fa-clock fa-xl","fa-solid fa-film fa-xl",
@@ -16,9 +16,9 @@ function KanbasNarrowNavigation() {
         "Pages", "Files", "Rubrics", "Outcomes", "Collaborations", "Syllabus", "Settings"];
     let  courseId  = localStorage.getItem("courseId");
     if(courseId == null) {
-        courseId = db.courses[0]._id;
+        courseId = courses[0]._id;
     }
-    const course = db.courses.find((course) => course._id === courseId);
+
     let {link} = courseLinks[0];
 
     if (pathname.includes("Courses")) {

@@ -3,17 +3,33 @@ import { useNavigate, useParams } from "react-router-dom";
 import db from "../../../Database";
 import { Link } from "react-router-dom";
 import './index.css';
+import {useDispatch, useSelector} from "react-redux";
+import {
+    addAssignment,
+    deleteAssignment,
+    updateAssignment,
+    setAssignment,
+} from "../assignmentsReducer";
+import {addModule, setModule, updateModule} from "../../Modules/modulesReducer";
 
 
 function AssignmentEditor() {
+    const dispatch = useDispatch();
     const { assignmentId } = useParams();
-    const assignment = db.assignments.find(
-        (assignment) => assignment._id === assignmentId);
-
     const { courseId } = useParams();
+    const assignments = useSelector((state) => state.assignmentsReducer.assignments)
+    const assignment = useSelector((state) => state.assignmentsReducer.assignment)
+
     const navigate = useNavigate();
     const handleSave = () => {
         console.log("Actually saving assignment TBD in later assignments");
+        if(assignments.find(
+            (assignment) => assignment._id === assignmentId) == null){
+            dispatch(addAssignment({...assignment, course: courseId}))
+        }else{
+            dispatch(updateAssignment(assignment))
+        }
+
         navigate(`/Kanbas/Courses/${courseId}/Assignments`);
     };
     return (
@@ -37,11 +53,16 @@ function AssignmentEditor() {
             <div className="list-group" style={{"margin-top": "10px"}}>
                 <div className="mb-3">
                     <label for="assignment-name" className="form-label">Assignment Name</label>
-                    <input type="text" className="form-control" id="assignment-name" value={assignment.title}></input>
+                    <input className="form-control" id="assignment-name" value={assignment.title}
+                           onChange={(e) =>
+                               dispatch(setAssignment({ ...assignment, title: e.target.value }))
+                            }
+                    />
                 </div>
                 <div className="mb-3">
-                  <textarea className="form-control"  rows="3">This assignment describes how to install the development environment for creating and working with Web applications we will be developing this semester
-                  </textarea>
+                  <textarea className="form-control"  rows="3" value={assignment.description}
+                            onChange={(e) =>
+                                dispatch(setAssignment({ ...assignment, description: e.target.value }))}/>
                 </div>
 
                 <div className="container text-center">
@@ -51,7 +72,9 @@ function AssignmentEditor() {
                         </div>
                         <div className="col">
                             <div className="mb-3">
-                                <input type="text" className="form-control" value="100"></input>
+                                <input type="text" className="form-control" value={assignment.point}
+                                       onChange={(e) =>
+                                           dispatch(setAssignment({ ...assignment, point: e.target.value }))}/>
                             </div>
                         </div>
                     </div>
@@ -220,19 +243,25 @@ function AssignmentEditor() {
 
                             <div style={{margin: "10px"}}><span><b>Due</b></span></div>
                             <div className="mb-3" style={{margin: "10px"}}>
-                                <input type="date" className="form-control"  value="2023-09-18"></input>
+                                <input type="date" className="form-control"  value={assignment.dueDate}
+                                       onChange={(e) =>
+                                           dispatch(setAssignment({ ...assignment, dueDate: e.target.value }))}></input>
                             </div>
                             <div className="row" style={{margin: "1px"}}>
                                 <div className="col">
                                     <div><span><b>Available from</b></span></div>
                                     <div className="mb-3" style={{marginTop: "2px"}}>
-                                        <input type="date" className="form-control"  value="2023-09-18"></input>
+                                        <input type="date" className="form-control"  value={assignment.availableFromDate}
+                                               onChange={(e) =>
+                                                   dispatch(setAssignment({ ...assignment, availableFromDate: e.target.value }))}></input>
                                     </div>
                                 </div>
                                 <div className="col">
                                     <div><span><b>Until</b></span></div>
                                     <div className="mb-3" style={{marginTop: "2px"}}>
-                                        <input type="date" className="form-control"  value="2023-09-18"></input>
+                                        <input type="date" className="form-control"  value={assignment.availableUntilDate}
+                                               onChange={(e) =>
+                                                   dispatch(setAssignment({ ...assignment, availableUntilDate: e.target.value }))}></input>
                                     </div>
                                 </div>
                             </div>

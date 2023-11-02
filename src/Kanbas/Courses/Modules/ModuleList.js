@@ -1,11 +1,24 @@
-import React from "react";
+import React , { useState }from "react";
 import {Link, useParams} from "react-router-dom";
 import db from "../../Database";
 import './index.css';
+import { useSelector, useDispatch } from "react-redux";
+import {
+    addModule,
+    deleteModule,
+    updateModule,
+    setModule,
+} from "./modulesReducer";
+
 
 function ModuleList() {
     const { courseId } = useParams();
-    const modules = db.modules;
+    const modules = useSelector((state) => state.modulesReducer.modules);
+    const module = useSelector((state) => state.modulesReducer.module);
+    const dispatch = useDispatch();
+
+
+
     return (
         <div className="display-1300 display-1100"
              style={{"display":"inline-block","margin-top":"40px",width:"70%"}}>
@@ -48,6 +61,31 @@ function ModuleList() {
                 <hr className="hr-style"></hr>
 
                 <ul className="list-group">
+                    <li className="list-group-item">
+
+                        <span style={{marginRight:"5px"}}>Module Name:</span>
+                        <input value={module.name}
+                               onChange={(e) =>
+                                   dispatch(setModule({ ...module, name: e.target.value }))
+                               }
+                        />
+                        <button className="btn btn-success" style={{marginLeft:"20px"}} onClick={() => dispatch(addModule({ ...module, course: courseId }))}>
+                            Add</button>
+
+                        <button className="btn btn-primary" style={{marginLeft:"20px"}} onClick={() => dispatch(updateModule(module))}>
+                            Update
+                        </button>
+                        <br/><br/>
+
+                        <textarea value={module.description} cols = "50"
+                                  onChange={(e) =>
+                                      dispatch(setModule({ ...module, description: e.target.value }))
+                                  }
+                        />
+
+
+                    </li>
+                    <br/>
                     {
                         modules
                             .filter((module) => module.course === courseId)
@@ -59,6 +97,7 @@ function ModuleList() {
                                     <i className="fa fa-ellipsis-v list-group-font-small" aria-hidden="true"></i>
                                     <span style={{marginLeft:"10px"}}>{module.name}</span>
 
+
                                     <button type="button" className="btn float-end">
                                         <i className="fa fa-ellipsis-v list-group-font-small" aria-hidden="true">
                                         </i>
@@ -66,13 +105,30 @@ function ModuleList() {
                                     <button type="button" className="btn float-end">
                                         <i className="fa fa-plus list-group-font-small" aria-hidden="true"></i>
                                     </button>
-                                    <button type="button" className="btn float-end">
+                                    <button type="button" className="btn float-end" data-bs-toggle="collapse"
+                                            data-bs-target={"#"+module._id} aria-expanded="false" aria-controls={module._id}>
                                         <i className="fa-solid fa-chevron-down list-group-font-small"></i>
                                     </button>
                                     <button type="button" className="btn float-end">
                                         <i className="fa fa-check-circle list-group-check-circle" aria-hidden="true"></i>
                                     </button>
-                                    <div style={{marginLeft:"17px",fontSize:"small"}}>{module.description}</div>
+
+                                    <button
+                                        className="btn btn-warning float-end"
+                                        onClick={() => dispatch(setModule(module))}>
+                                        Edit
+                                    </button>
+
+                                    <button
+                                        className="btn btn-danger float-end"
+                                        style={{marginRight:"5px"}}
+                                        onClick={() => dispatch(deleteModule(module._id))}>
+                                        Delete
+                                    </button>
+                                    <div className="collapse" id={module._id}>
+                                        <div style={{marginLeft:"17px",fontSize:"small"}}>{module.description}</div>
+                                    </div>
+
                                 </li>
                             ))
                     }

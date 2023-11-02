@@ -28,6 +28,13 @@ ul {
     margin-left: 30px;
 }
 
+.dashboard-left-part .input-course{
+    margin-bottom: 10px;
+    margin-right: 10px;
+    width: 300px;
+    display: inline-block;
+}
+
 .dashboard-left-part .course-col{
     margin-bottom: 30px;
     width: 300px;

@@ -2,13 +2,24 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import db from "../../Database";
 import './index.css'
-
+import {useDispatch, useSelector} from "react-redux";
+import {
+    addAssignment,
+    deleteAssignment,
+    updateAssignment,
+    setAssignment,
+} from "./assignmentsReducer";
+import {deleteModule, setModule} from "../Modules/modulesReducer";
 
 function Assignments() {
+    const dispatch = useDispatch();
     const { courseId } = useParams();
-    const assignments = db.assignments;
+    const assignments = useSelector((state) => state.assignmentsReducer.assignments);
+    const assignment = useSelector((state) => state.assignmentsReducer.assignment)
     const courseAssignments = assignments.filter(
         (assignment) => assignment.course === courseId);
+
+
     return (
         <div style={{"display": "inline-block","vertical-align": "top",marginTop:"50px",width: "90%"}}>
             <div>
@@ -23,7 +34,13 @@ function Assignments() {
                     <button type="button" className="btn btn-danger float-end" style={{"margin-right": "3px"}}>
                         <i className="fa fa-plus" aria-hidden="true"
                            style={{"margin-right": "3px","font-size": "small"}}></i>
-                        Assignment
+                        <Link to ={`/Kanbas/Courses/${courseId}/Assignments/${new Date().getTime().toString()}`}
+                              onClick={(e) =>
+                                  dispatch(setAssignment({ ...assignment, title: "New Assignments", description: "New Assignment Description",point:"",course: {courseId}}))}
+                        style={{textDecoration:"none",color: "white"}}>
+                            Assignment
+
+                        </Link>
                     </button>
 
                     <button type="button" className="btn btn-secondary float-end"
@@ -62,19 +79,23 @@ function Assignments() {
 
                 <div style={{"border-left": "3px solid green"}}>
                     {courseAssignments.map((assignment) => (
-                        <Link
-                            key={assignment._id}
-                            to={`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`}
-                            className="list-group-item">
-                            <div style={{"display": "inline-block","vertical-align": "top"}}>
-                                <i className="fa fa-ellipsis-v" aria-hidden="true" style={{"font-size": "small"}}></i>
-                                <i className="fa fa-ellipsis-v" aria-hidden="true" style={{"font-size": "small"}}></i>
-                                <i className="fa-regular fa-pen-to-square" style={{"color": "green","margin-left": "8px"}}></i>
-                            </div>
+                        <li className="li-style list-group-item">
+                            <Link  key={assignment._id}
+                                   to={`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`}
 
-                            <div style={{"display": "inline-block","margin-left": "8px"}}>
-                                <div><b>{assignment.title}</b></div>
-                            </div>
+                                   onClick={(e) =>
+                                       dispatch(setAssignment(assignment))}
+                            style={{color:"black"}}>
+                                <div style={{"display": "inline-block","vertical-align": "top"}}>
+                                    <i className="fa fa-ellipsis-v" aria-hidden="true" style={{"font-size": "small"}}></i>
+                                    <i className="fa fa-ellipsis-v" aria-hidden="true" style={{"font-size": "small"}}></i>
+                                    <i className="fa-regular fa-pen-to-square" style={{"color": "green","margin-left": "8px"}}></i>
+                                </div>
+
+                                <div style={{"display": "inline-block","margin-left": "8px"}}>
+                                    <div><b>{assignment.title}</b></div>
+                                </div>
+                            </Link>
 
                             <button type="button" className="btn float-end">
                                 <i className="fa fa-ellipsis-v" aria-hidden="true"></i>
@@ -84,7 +105,39 @@ function Assignments() {
                                    style={{"color": "green"}}>
                                 </i>
                             </button>
-                        </Link>
+
+                            <button type="button" className="btn btn-danger btn-sm float-end"
+                                    data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                                    style={{marginTop:"0px"}}
+                            >
+                                Delete
+                            </button>
+
+                            <div className="modal fade" id="staticBackdrop" data-bs-backdrop="false"
+                                 data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel"
+                                 aria-hidden="true">
+                                <div className="modal-dialog">
+                                    <div className="modal-content">
+                                        <div className="modal-header">
+                                            <h5 className="modal-title" id="staticBackdropLabel">Delete</h5>
+                                            <button type="button" className="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                        </div>
+                                        <div className="modal-body">
+                                            if you are sure to remove the assignment?
+                                        </div>
+                                        <div className="modal-footer">
+                                            <button type="button" className="btn btn-secondary"
+                                                    data-bs-dismiss="modal">No
+                                            </button>
+                                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
+                                                    onClick={() => dispatch(deleteAssignment(assignment._id))}>Yes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </li>
                     ))}
                 </div>
 

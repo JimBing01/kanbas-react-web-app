@@ -99,12 +99,14 @@ function Grades() {
                         {enrollments.map((enrollment) => {
                             const user = db.users.find((user) => user._id === enrollment.user);
                             return (
-                                <tr>
+                                <tr valign="middle">
                                     <td>{user.firstName} {user.lastName}</td>
                                     {assignments.map((assignment) => {
                                         const grade = db.grades.find(
                                             (grade) => grade.student === enrollment.user && grade.assignment === assignment._id);
-                                        return (<td>{grade?.grade || ""}</td>);})}
+                                        return (<td>{grade ?.grade ||
+                                            <input className="form-control" value="100"
+                                             style={{"text-align": "center",}}/>}</td>);})}
                                 </tr>);
                         })}
                     </tbody>

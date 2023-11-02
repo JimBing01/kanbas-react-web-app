@@ -9,15 +9,15 @@ import Grades from "./Grades";
 import KanbasNarrowNavigation from "../KanbasNarrowNavigation";
 import './index.css'
 
-function Courses() {
+function Courses({ courses }) {
     const { courseId } = useParams();
     if(courseId == null) {
-        localStorage.setItem("courseId",db.courses[0]._id);
+        localStorage.setItem("courseId",courses[0]._id);
     }else {
         localStorage.setItem("courseId",courseId);
     }
 
-    const course = db.courses.find((course) => course._id === courseId);
+    const course = courses.find((course) => course._id === courseId);
     const links = ["Home", "Modules", "Piazza", "Zoom Meetings", "Assignments",
         "Quizzes", "Grades", "People", "Panopto Video", "Discussions", "Announcements",
         "Pages", "Files", "Rubrics", "Outcomes", "Collaborations", "Syllabus", "Settings"];

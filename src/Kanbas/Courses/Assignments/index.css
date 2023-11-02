@@ -10,3 +10,14 @@
     width:100%;
     color:#2F4F4F;
 }
+
+.li-style{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width:100%;
+    height: 40px;
+    padding-top: 6px;
+}
+
+
