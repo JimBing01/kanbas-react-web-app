@@ -87,8 +87,8 @@ function Grades() {
                 </button>
             </div>
 
-            <div class="table-responsive" style={{marginTop: "20px"}}>
-                <table class="table table-striped table-bordered" >
+            <div className="table-responsive " style={{marginTop: "20px"}}>
+                <table className="table table-striped table-bordered" >
                     <thead align="middle">
                         <tr valign="middle">
                             <td>Student Name</td>

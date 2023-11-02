@@ -107,13 +107,13 @@ function Assignments() {
                             </button>
 
                             <button type="button" className="btn btn-danger btn-sm float-end"
-                                    data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                                    style={{marginTop:"0px"}}
+                                    data-bs-toggle="modal" data-bs-target={'#'+assignment._id}
+                                    style={{marginTop:"0px"} }
                             >
                                 Delete
                             </button>
 
-                            <div className="modal fade" id="staticBackdrop" data-bs-backdrop="false"
+                            <div className="modal fade" id={assignment._id} data-bs-backdrop="false"
                                  data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel"
                                  aria-hidden="true">
                                 <div className="modal-dialog">
