@@ -14,7 +14,7 @@ const assignmentsSlice = createSlice({
     reducers: {
         addAssignment: (state, action) => {
             state.assignments = [
-                { ...action.payload, _id: new Date().getTime().toString() },
+                { ...action.payload, _id: 'assignment' + new Date().getTime().toString() },
                 ...state.assignments,
             ];
         },
