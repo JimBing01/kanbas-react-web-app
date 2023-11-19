@@ -1,4 +1,4 @@
-import React , { useState }from "react";
+import React , { useEffect, useState }from "react";
 import {Link, useParams} from "react-router-dom";
 import db from "../../Database";
 import './index.css';
@@ -8,15 +8,37 @@ import {
     deleteModule,
     updateModule,
     setModule,
+    setModules,
 } from "./modulesReducer";
-
+import * as client from "./client";
 
 function ModuleList() {
     const { courseId } = useParams();
+
     const modules = useSelector((state) => state.modulesReducer.modules);
     const module = useSelector((state) => state.modulesReducer.module);
     const dispatch = useDispatch();
+    const handleAddModule = () => {
+        client.createModule(courseId, module).then((module) => {
+            dispatch(addModule(module));
+        });
+    };
+    const handleDeleteModule = (moduleId) => {
+        client.deleteModule(moduleId).then((status) => {
+            dispatch(deleteModule(moduleId));
+        });
+    };
+    const handleUpdateModule = async () => {
+        const status = await client.updateModule(module);
+        dispatch(updateModule(module));
+    };
 
+    useEffect(() => {
+        client.findModulesForCourse(courseId)
+            .then((modules) =>
+                dispatch(setModules(modules))
+            );
+    }, [courseId]);
 
 
     return (
@@ -69,10 +91,10 @@ function ModuleList() {
                                    dispatch(setModule({ ...module, name: e.target.value }))
                                }
                         />
-                        <button className="btn btn-success" style={{marginLeft:"20px"}} onClick={() => dispatch(addModule({ ...module, course: courseId }))}>
+                        <button className="btn btn-success" style={{marginLeft:"20px"}} onClick={handleAddModule}>
                             Add</button>
 
-                        <button className="btn btn-primary" style={{marginLeft:"20px"}} onClick={() => dispatch(updateModule(module))}>
+                        <button className="btn btn-primary" style={{marginLeft:"20px"}} onClick={() => handleUpdateModule()}>
                             Update
                         </button>
                         <br/><br/>
@@ -122,7 +144,7 @@ function ModuleList() {
                                     <button
                                         className="btn btn-danger float-end"
                                         style={{marginRight:"5px"}}
-                                        onClick={() => dispatch(deleteModule(module._id))}>
+                                        onClick={() => handleDeleteModule(module._id)}>
                                         Delete
                                     </button>
                                     <div className="collapse" id={module._id}>

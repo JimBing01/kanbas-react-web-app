@@ -4,28 +4,55 @@ import Dashboard from "./Dashboard";
 import Courses from "./Courses";
 import './index.css';
 import KanbasNarrowNavigation from "./KanbasNarrowNavigation";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import db from "./Database";
 import store from "./store";
 import { Provider } from "react-redux";
+import axios from "axios";
 
 function Kanbas() {
-    const [courses, setCourses] = useState(db.courses);
+    const [courses, setCourses] = useState([]);
     const [course, setCourse] = useState({
         name: "New Course",      number: "New Number",
         startDate: "2023-09-10", endDate: "2023-12-15",
     });
-    const addNewCourse = () => {
-        setCourses([...courses, { ...course, _id: new Date().getTime().toString() }]);
+
+    const URL = "http://localhost:4000/api/courses";
+    const findAllCourses = async () => {
+        const response = await axios.get(URL);
+        setCourses(response.data);
+    };
+    useEffect(() => {
+        findAllCourses();
+    }, []);
+
+    const addNewCourse = async () => {
+        const response = await axios.post(URL, course);
+
+        setCourses([
+            response.data,
+            ...courses,
+        ]);
+
         setCourse({
             name: "New Course",      number: "New Number",
             startDate: "2023-09-10", endDate: "2023-12-15",
         })
     };
-    const deleteCourse = (courseId) => {
+
+    const deleteCourse = async (courseId) => {
+        const response = await axios.delete(
+            `${URL}/${courseId}`
+        );
+
         setCourses(courses.filter((course) => course._id !== courseId));
     };
-    const updateCourse = () => {
+    const updateCourse = async () => {
+        const response = await axios.put(
+            `${URL}/${course._id}`,
+            course
+        );
+
         setCourses(
             courses.map((c) => {
                 if (c._id === course._id) {
@@ -40,6 +67,7 @@ function Kanbas() {
             startDate: "2023-09-10", endDate: "2023-12-15",
         })
     };
+
 
     return (
         <Provider store={store}>

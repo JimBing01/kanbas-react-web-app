@@ -8,16 +8,24 @@ import AssignmentEditor from "./Assignments/AssignmentEditor";
 import Grades from "./Grades";
 import KanbasNarrowNavigation from "../KanbasNarrowNavigation";
 import './index.css'
+import {useEffect, useState} from "react";
+import axios from "axios";
 
-function Courses({ courses }) {
+function Courses() {
     const { courseId } = useParams();
-    if(courseId == null) {
-        localStorage.setItem("courseId",courses[0]._id);
-    }else {
-        localStorage.setItem("courseId",courseId);
-    }
+    const URL = "http://localhost:4000/api/courses";
+    const [course, setCourse] = useState({});
+    const findCourseById = async (courseId) => {
+        const response = await axios.get(
+            `${URL}/${courseId}`
+        );
+        setCourse(response.data);
+    };
+    useEffect(() => {
+        findCourseById(courseId);
+    }, [courseId]);
 
-    const course = courses.find((course) => course._id === courseId);
+
     const links = ["Home", "Modules", "Piazza", "Zoom Meetings", "Assignments",
         "Quizzes", "Grades", "People", "Panopto Video", "Discussions", "Announcements",
         "Pages", "Files", "Rubrics", "Outcomes", "Collaborations", "Syllabus", "Settings"];
