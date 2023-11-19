@@ -11,6 +11,7 @@ import {
     setAssignment,
 } from "../assignmentsReducer";
 import {addModule, setModule, updateModule} from "../../Modules/modulesReducer";
+import * as client from "../client";
 
 
 function AssignmentEditor() {
@@ -21,13 +22,18 @@ function AssignmentEditor() {
     const assignment = useSelector((state) => state.assignmentsReducer.assignment)
 
     const navigate = useNavigate();
-    const handleSave = () => {
+    const handleSave = async () => {
         console.log("Actually saving assignment TBD in later assignments");
         if(assignments.find(
             (assignment) => assignment._id === assignmentId) == null){
-            dispatch(addAssignment({...assignment, course: courseId}))
+            client.createAssignment(courseId, assignment).then((assignment) => {
+                dispatch(addAssignment(assignment));
+            });
+
         }else{
-            dispatch(updateAssignment(assignment))
+            const status = await client.updateAssignment(assignment);
+            dispatch(updateAssignment(assignment));
+
         }
 
         navigate(`/Kanbas/Courses/${courseId}/Assignments`);

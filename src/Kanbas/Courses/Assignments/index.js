@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Link, useParams } from "react-router-dom";
 import db from "../../Database";
 import './index.css'
@@ -8,16 +8,29 @@ import {
     deleteAssignment,
     updateAssignment,
     setAssignment,
+    setAssignments,
 } from "./assignmentsReducer";
-import {deleteModule, setModule} from "../Modules/modulesReducer";
+
+import * as client from "./client";
 
 function Assignments() {
     const dispatch = useDispatch();
     const { courseId } = useParams();
     const assignments = useSelector((state) => state.assignmentsReducer.assignments);
     const assignment = useSelector((state) => state.assignmentsReducer.assignment)
-    const courseAssignments = assignments.filter(
-        (assignment) => assignment.course === courseId);
+
+    const handleDeleteAssignment = (assignmentId) => {
+        client.deleteAssignment(assignmentId).then((status) => {
+            dispatch(deleteAssignment(assignmentId));
+        });
+    };
+
+    useEffect(() => {
+        client.findAssignmentsForCourse(courseId)
+            .then((assignments) =>
+                dispatch(setAssignments(assignments))
+            );
+    }, [courseId]);
 
 
     return (
@@ -78,7 +91,7 @@ function Assignments() {
                 </Link>
 
                 <div style={{"border-left": "3px solid green"}}>
-                    {courseAssignments.map((assignment) => (
+                    {assignments.map((assignment) => (
                         <li className="li-style list-group-item">
                             <Link  key={assignment._id}
                                    to={`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`}
@@ -131,7 +144,7 @@ function Assignments() {
                                                     data-bs-dismiss="modal">No
                                             </button>
                                             <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
-                                                    onClick={() => dispatch(deleteAssignment(assignment._id))}>Yes</button>
+                                                    onClick={() => handleDeleteAssignment(assignment._id)}>Yes</button>
                                         </div>
                                     </div>
                                 </div>
