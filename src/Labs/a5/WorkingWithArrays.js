@@ -12,7 +12,10 @@ function WorkingWithArrays() {
         completed: false,
     });
 
-    const API = "http://localhost:4000/a5/todos";
+    const API_BASE = process.env.REACT_APP_API_BASE_LAB;
+
+    const URL = `${API_BASE}/a5`;
+    const API = `${URL}/todos`;
     const [todos, setTodos] = useState([]);
     const fetchTodos = async () => {
         const response = await axios.get(API);
