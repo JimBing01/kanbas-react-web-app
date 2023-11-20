@@ -16,7 +16,7 @@ function KanbasNarrowNavigation({courses, course}) {
         "Pages", "Files", "Rubrics", "Outcomes", "Collaborations", "Syllabus", "Settings"];
     let  courseId  = localStorage.getItem("courseId");
     if(courseId == null) {
-        courseId = courses[0]._id;
+        courseId = "RS101";
     }
 
     let {link} = courseLinks[0];
