@@ -2,8 +2,8 @@ import {Link, useLocation, useParams} from "react-router-dom";
 import db from "../../../Database";
 
 function NarrowNavigation() {
-    const links = ["Account", "Dashboard", "Courses", "Calender", "Inbox", "History", "Studio", "Commons", "Question"];
-    const icons = ["fa-regular fa-circle-user fa-xl","fa-solid fa-gauge fa-xl","fa-solid fa-book fa-xl", "fa-solid fa-calendar-days fa-xl",
+    const links = ["Signin","Account", "Dashboard", "Courses", "Calender", "Inbox", "History", "Studio", "Commons", "Question"];
+    const icons = ["fa-regular fa-circle-user fa-xl","fa-regular fa-circle-user fa-xl","fa-solid fa-gauge fa-xl","fa-solid fa-book fa-xl", "fa-solid fa-calendar-days fa-xl",
         "fa-solid fa-inbox fa-xl", "fa-regular fa-clock fa-xl","fa-solid fa-film fa-xl",
         "fa-solid fa-arrow-right-from-bracket fa-xl","fa-regular fa-circle-question fa-xl"];
     const { pathname } = useLocation();
@@ -29,7 +29,7 @@ function NarrowNavigation() {
                  "z-index": "10","position": "fixed"}}>
             <ul className="ul">
                 {courseLinks.map((link, index) => (
-                    <li>
+                    <li  key={index}>
                         <Link
                             key={index}
                             to={`/Kanbas/Courses/${courseId}/${link}`}

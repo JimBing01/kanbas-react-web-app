@@ -2,8 +2,9 @@ import { Link, useLocation } from "react-router-dom";
 import './index.css';
 
 function KanbasNavigation() {
-    const links = ["Account", "Dashboard", "Courses", "Calender", "Inbox", "History", "Studio", "Commons", "Question"];
-    const icons = ["fa-regular fa-circle-user fa-xl","fa-solid fa-gauge fa-xl","fa-solid fa-book fa-xl", "fa-solid fa-calendar-days fa-xl",
+    const links = ["Signin","Account", "Signup","Dashboard", "Courses", "Calender", "Inbox", "History", "Studio", "Commons", "Question"];
+    const icons = ["fa-regular fa-circle-user fa-xl","fa-regular fa-circle-user fa-xl","fa-solid fa-arrow-right-from-bracket fa-xl",
+        "fa-solid fa-gauge fa-xl","fa-solid fa-book fa-xl", "fa-solid fa-calendar-days fa-xl",
         "fa-solid fa-inbox fa-xl", "fa-regular fa-clock fa-xl","fa-solid fa-film fa-xl",
         "fa-solid fa-arrow-right-from-bracket fa-xl","fa-regular fa-circle-question fa-xl"];
     const { pathname } = useLocation();
@@ -12,7 +13,7 @@ function KanbasNavigation() {
         <div className="navigation hidden-1100">
             <ul className="ul">
                 {links.map((link, index) => (
-                    <li className={`${pathname.includes(link) && "active"}`}>
+                    <li className={`${pathname.includes(link) && "active"}`}  key={index}>
                         <Link
                             key={index}
                             to={`/Kanbas/${link}`}

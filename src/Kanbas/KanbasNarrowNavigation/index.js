@@ -6,8 +6,8 @@ import Courses from "../Courses";
 import NarrowNavigation from "../Courses/CourseNavigation/NarrowNavigation";
 
 function KanbasNarrowNavigation({courses, course}) {
-    const links = ["Account", "Dashboard", "Courses", "Calender", "Inbox", "History", "Studio", "Commons", "Question"];
-    const icons = ["fa-regular fa-circle-user fa-xl","fa-solid fa-gauge fa-xl","fa-solid fa-book fa-xl", "fa-solid fa-calendar-days fa-xl",
+    const links = ["Signin","Account", "Dashboard", "Courses", "Calender", "Inbox", "History", "Studio", "Commons", "Question"];
+    const icons = ["fa-regular fa-circle-user fa-xl","fa-regular fa-circle-user fa-xl","fa-solid fa-gauge fa-xl","fa-solid fa-book fa-xl", "fa-solid fa-calendar-days fa-xl",
         "fa-solid fa-inbox fa-xl", "fa-regular fa-clock fa-xl","fa-solid fa-film fa-xl",
         "fa-solid fa-arrow-right-from-bracket fa-xl","fa-regular fa-circle-question fa-xl"];
     const { pathname } = useLocation();
@@ -83,8 +83,8 @@ function KanbasNarrowNavigation({courses, course}) {
             </div>
 
             <div id="narrow-navigation" className="narrow-navigation"
-                 style={{"display": "none","vertical-align": "top","position": "fixed",
-                     "z-index": "10"}}>
+                 style={{"display": "none",verticalAlign: "top","position": "fixed",
+                     zIndex: "10"}}>
                 <button id="narrow-navigation-close" type="button"
                         className="btn-close float-end" aria-label="Close"
                 onClick={()=>{
@@ -94,7 +94,7 @@ function KanbasNarrowNavigation({courses, course}) {
                 </button>
                 <ul>
                     {links.map((link, index) => (
-                        <li>
+                        <li key={index}>
                             <Link
                                 key={index}
                                 to={`/Kanbas/${link}`}
