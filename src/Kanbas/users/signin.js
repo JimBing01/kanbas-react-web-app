@@ -22,15 +22,15 @@ function Signin() {
                     style={{marginLeft:"50px",marginTop:"20px"}}> Signin </button>
             <br/>
 
-            One of account for TA logging in:
-            name:iron_man
-            password:stark123
+            One of account for TA logging in:<br/><br/>
+            name:iron_man<br/>
+            password:stark123<br/><br/>
 
-            name:dark_knight
-            password:wayne123
+            name:dark_knight<br/>
+            password:wayne123<br/><br/>
 
-            name:black_wido
-            password:romanoff123
+            name:black_wido<br/>
+            password:romanoff123<br/>
         </div>
     );
 }
