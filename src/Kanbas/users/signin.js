@@ -29,7 +29,7 @@ function Signin() {
             name:dark_knight<br/>
             password:wayne123<br/><br/>
 
-            name:black_wido<br/>
+            name:black_widow<br/>
             password:romanoff123<br/>
         </div>
     );
