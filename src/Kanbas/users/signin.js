@@ -20,6 +20,17 @@ function Signin() {
                    onChange={(e) => setCredentials({...credentials, password: e.target.value})}/>
             <button className="btn btn-primary" onClick={signin}
                     style={{marginLeft:"50px",marginTop:"20px"}}> Signin </button>
+            <br/>
+
+            One of account for TA logging in:
+            name:iron_man
+            password:stark123
+
+            name:dark_knight
+            password:wayne123
+
+            name:black_wido
+            password:romanoff123
         </div>
     );
 }
