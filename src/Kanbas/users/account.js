@@ -53,7 +53,7 @@ function Account() {
                                lastName: e.target.value })}/>
                     <input  type="date" className="form-control"
                            style={{width:"300px",marginLeft:"50px",marginTop:"20px"}}
-                        value={account.dob}
+                        value={new Date(account.dob).toISOString().split('T')[0]}
                            onChange={(e) => setAccount({ ...account,
                                dob: e.target.value })}/>
                     <input type="text" className="form-control" placeholder="email"
